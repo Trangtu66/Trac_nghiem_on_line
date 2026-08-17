@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Trắc nghiệm cộng đồng</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Trắc nghiệm cộng đồng</h1>
+    <p class="subtitle">Tạo đề từ ngân hàng câu hỏi, học sinh làm bài, xem điểm & đáp án chi tiết.</p>
+  </header>
+
+  <main class="container">
+    <section class="panel teacher">
+      <h2>Ngân hàng câu hỏi (Giáo viên)</h2>
+      <label>Chủ đề bài tập: <input id="topicInput" placeholder="Ví dụ: Toán 12 - Đại số"></label>
+      <label>Thời gian (phút): <input id="timeInput" type="number" min="1" value="15"></label>
+      <p>Đặt JSON ngân hàng câu hỏi bên dưới hoặc tải mẫu để thử.</p>
+      <textarea id="bankInput" rows="14" spellcheck="false"></textarea>
+      <div class="row" style="margin-top:8px">
+        <button id="loadSample">Tải mẫu ngân hàng</button>
+        <button id="generate">Tạo đề từ ngân hàng</button>
+      </div>
+      <p class="small">Lưu ý: Nhóm 1: trắc nghiệm 4 lựa chọn (A-D). Nhóm 2: mỗi câu có 4 ý a)-d) cần chọn Đúng/Sai. Nhóm 3: trả lời ngắn (so sánh chuỗi).</p>
+    </section>
+
+    <section class="panel student">
+      <div class="exam-header">
+        <h2 id="examTitle">[Chưa có đề]</h2>
+        <div class="meta">
+          <div>Số câu trắc nghiệm: <span id="countG1">0</span></div>
+          <div>Số câu đúng/sai (mỗi câu 4 ý): <span id="countG2">0</span></div>
+          <div>Số câu trả lời ngắn: <span id="countG3">0</span></div>
+          <div>Thời gian còn lại: <span id="timer">--:--</span></div>
+        </div>
+      </div>
+
+      <label class="name">Học sinh (Tên): <input id="studentName" placeholder="Nhập tên..."></label>
+      <form id="examForm"></form>
+
+      <div class="controls">
+        <button id="submitBtn" class="primary">Nộp bài</button>
+        <button id="resetAnswers" type="button" class="secondary">Xoá đáp án</button>
+      </div>
+
+      <section id="result" class="result" hidden>
+        <h3>Kết quả</h3>
+        <div id="scoreSummary"></div>
+        <div id="detailedAnswers"></div>
+        <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+          <button id="downloadReport">Tải kết quả (.txt)</button>
+          <button id="saveAttemptBtn">Lưu kết quả (Local)</button>
+        </div>
+      </section>
+
+      <section id="historyPanel" class="result" style="margin-top:12px">
+        <h3>Lịch sử bài làm (local)</h3>
+        <div style="display:flex;gap:8px;margin-bottom:8px;flex-wrap:wrap">
+          <button id="exportCsvBtn">Xuất CSV</button>
+          <button id="clearHistoryBtn" class="secondary">Xoá lịch sử</button>
+        </div>
+        <div id="historyList" class="small">Chưa có lịch sử.</div>
+      </section>
+
+    </section>
+  </main>
+
+  <footer>
+    <small>Giao diện miễn phí - Thiết kế tối giản, màu nền dịu mắt.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
